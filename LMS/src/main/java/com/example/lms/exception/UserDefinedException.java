@@ -1,0 +1,7 @@
+package com.example.lms.exception;
+
+public class UserDefinedException extends RuntimeException{
+    public UserDefinedException(String message) {
+        super(message);
+    }
+}
