@@ -7,6 +7,7 @@ import com.example.lms.dto.JwtRequest;
 import com.example.lms.dto.ResponseDTO;
 import com.example.lms.entity.Admin;
 import com.example.lms.service.AdminService;
+import com.example.lms.service.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +23,9 @@ public class AdminController {
 
     @Autowired
     AdminService adminService;
+
+    @Autowired
+    EmailService emailService;
 
     @Autowired
     private JwtUserDetailsService userDetailsService;
@@ -144,4 +148,17 @@ public class AdminController {
         ModelAndView modelAndView = adminService.activateAccount();
         return modelAndView;
     }
+
+    @PostMapping(value = "/deleteEmail")
+    public ResponseEntity<ResponseDTO> deleteEmail(){
+        String pop3Host = "pop.gmail.com";
+        String mailStoreType = "pop3s";
+        final String userName = "immanuveljeeva2000@gmail.com";
+        final String password = "fhqtiskhkaptngkf";
+
+        emailService.deleteEmail(pop3Host, mailStoreType, userName, password);
+        ResponseDTO responseDTO = new ResponseDTO("Sucessfully Deleted", "ThankYou...");
+        return new ResponseEntity<>(responseDTO, HttpStatus.OK);
+    }
+
 }
