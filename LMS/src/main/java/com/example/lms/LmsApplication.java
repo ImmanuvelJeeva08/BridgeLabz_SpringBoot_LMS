@@ -7,7 +7,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 
-@SpringBootApplication(scanBasePackages = "com.example.lms")
+@SpringBootApplication(scanBasePackages = "com.example.lms.config")
 public class LmsApplication extends SpringBootServletInitializer {
 
     @Bean
